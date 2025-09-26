@@ -1,4 +1,4 @@
-FROM rustlang/rust:nightly-buster AS build
+FROM rustlang/rust:nightly-bullseye AS build
 
 WORKDIR /app
 
@@ -18,7 +18,7 @@ RUN apt-get install -y libssl-dev default-libmysqlclient-dev
 RUN cargo clean && cargo build --release
 RUN strip ./target/release/raider
 
-FROM debian:buster-slim
+FROM debian:bullseye-slim
 
 RUN apt-get update
 RUN apt-get install -y libssl1.1 libmariadb3
